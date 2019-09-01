@@ -161,6 +161,9 @@
     "moduleDirectories": [
       "node_modules",
       "./"
+    ],
+    "setupFilesAfterEnv": [
+      "./src/app/helpers/JestBootstrap.ts"
     ]
   }
 }
