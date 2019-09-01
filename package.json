@@ -30,6 +30,8 @@
   },
   "scripts": {
     "prepush": "npm run build && npm run build:prod && npm run test:no-cache",
+    "preghpages": "npm run build:prod",
+    "ghpages": "gh-pages -d build",
     "commitmsg": "validate-commit-msg",
     "clean": "rimraf build && rimraf .jest/cache",
     "prebuild": "npm run clean -s",
@@ -88,6 +90,7 @@
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "file-loader": "^4.0.0",
+    "gh-pages": "^2.1.1",
     "husky": "^3.0.0",
     "jest": "^24.8.0",
     "jest-enzyme": "^7.0.2",
