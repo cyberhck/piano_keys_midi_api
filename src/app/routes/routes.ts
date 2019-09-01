@@ -2,7 +2,7 @@ interface IRoute {
   name: string;
   path: string;
 }
-const getRootPath = () => location.pathname;
+const getRootPath = () => typeof(location) === "undefined" ? "/" : location.pathname;
 const routes: IRoute[] = [
   {name: "home", path: `${getRootPath()}`}
 ];
