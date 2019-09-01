@@ -12,7 +12,6 @@ import favicon from "serve-favicon";
 import {config as appConfig} from "../config";
 import {App} from "./app/containers/App";
 import {Html} from "./app/containers/Html";
-import {LanguageHelper} from "./app/helpers/LanguageHelper";
 import {configureStore} from "./app/redux/configureStore";
 import {IStore} from "./app/redux/IStore";
 import {configureRouter} from "./app/routes/configureRouter";
@@ -39,11 +38,6 @@ app.use(favicon(path.join(__dirname, "public/favicon.ico")));
 
 app.use("/public", express.static(path.join(__dirname, "public")));
 
-app.get("/translations/:language", (req: express.Request, res: express.Response) => {
-  const languageHelper = new LanguageHelper(req.params.language);
-  res.json(languageHelper.getTranslations());
-});
-
 app.get("*", (req: express.Request, res: express.Response) => {
   if (!appConfig.ssr) {
     res.sendFile(path.resolve("./build/index.html"), {}, (error) => {
@@ -61,20 +55,12 @@ app.get("*", (req: express.Request, res: express.Response) => {
       return;
     }
 
-    const languageHelper = new LanguageHelper(req.headers["accept-language"] as string);
     const store = configureStore(router, {
       router: {
         previousRoute: null,
         route: routeState,
         transitionError: null,
         transitionRoute: null
-      },
-      settings: {
-        error: "",
-        language: "en",
-        loaded: true,
-        pending: false,
-        translations: languageHelper.getTranslations()
       }
     });
 

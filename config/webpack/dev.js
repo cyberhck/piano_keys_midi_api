@@ -18,8 +18,7 @@ const config = {
     app: [
       'react-hot-loader/patch',
       'webpack-hot-middleware/client?reload=true',
-      './src/client.tsx',
-      './src/vendor/main.ts'
+      './src/client.tsx'
     ]
   },
 

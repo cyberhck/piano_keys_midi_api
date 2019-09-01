@@ -74,7 +74,7 @@
     "no-with-statement": true,
     "promise-must-complete": true,
     "radix": true,
-    "react-this-binding-issue": true,
+    "react-this-binding-issue": [false, {"bind-decorators": ["autobind"]}],
     "switch-default": true,
     "triple-equals": [
       true,

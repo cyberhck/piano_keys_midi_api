@@ -9,7 +9,6 @@ import {setStylesTarget} from "typestyle";
 import {config as appConfig} from "../config";
 import {App} from "./app/containers/App";
 import {configureStore} from "./app/redux/configureStore";
-import {setLanguage} from "./app/redux/modules/settingsActionCreators";
 import {configureRouter} from "./app/routes/configureRouter";
 import rootSaga from "./app/sagas/rootSaga";
 
@@ -22,9 +21,6 @@ const renderOrHydrate = appConfig.ssr ? ReactDOM.hydrate : ReactDOM.render;
 const router = configureRouter();
 const store = configureStore(router, window.__INITIAL_STATE__);
 let sagaTask = store.runSaga(rootSaga);
-if (!appConfig.ssr) {
-  store.dispatch(setLanguage.invoke("en"));
-}
 router.start();
 renderOrHydrate(
   (
