@@ -20,7 +20,7 @@ const config = {
 
   output: {
     path: path.resolve('./build/public'),
-    publicPath: '/public/',
+    publicPath: '/piano_keys_midi_api/public/',
     filename: 'js/[name].[chunkhash].js'
   },
 
